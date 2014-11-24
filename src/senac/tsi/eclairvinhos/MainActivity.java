@@ -1,15 +1,22 @@
 package senac.tsi.eclairvinhos;
 
 import java.util.ArrayList;
+import java.util.prefs.Preferences;
 
 import senac.tsi.eclairvinhos.adapter.NavDrawerListAdapter;
 import senac.tsi.eclairvinhos.model.NavDrawerItem;
+import senac.tsi.eclairvinhos.model.Singleton;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
+import android.os.Build;
 import android.os.Bundle;
+import android.preference.Preference;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
@@ -19,10 +26,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-
 public class MainActivity extends Activity {
 	private DrawerLayout mDrawerLayout;
-	private ListView mDrawerList;
+	static private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
 
 	// nav drawer title
@@ -36,9 +42,17 @@ public class MainActivity extends Activity {
 	private TypedArray navMenuIcons;
 
 	private ArrayList<NavDrawerItem> navDrawerItems;
-	private NavDrawerListAdapter adapter;
+	private static NavDrawerListAdapter adapter;
 
-	@Override
+	private static String carrinhoCount = carrinhoCount = String.valueOf(Singleton.getInstance().getQtdTotal());
+	
+	public static void setCarrinhoCount(){
+		NavDrawerItem x = (NavDrawerItem)mDrawerList.getItemAtPosition(2);
+		x.setCount(String.valueOf(Singleton.getInstance().getQtdTotal()));
+		adapter.notifyDataSetChanged();
+	}
+	
+	@TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH) @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
@@ -57,15 +71,18 @@ public class MainActivity extends Activity {
 
 		navDrawerItems = new ArrayList<NavDrawerItem>();
 
+		
 		// adding nav drawer items to array
 		// Início
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
 		// Categoria
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
 		// Meus Pedidos
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1), true, "22"));
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1), true, carrinhoCount));
 		// Sobre o APP
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));		
+		//logout
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
 		
 
 		// Recycle the typed array
@@ -96,7 +113,11 @@ public class MainActivity extends Activity {
 			public void onDrawerOpened(View drawerView) {
 				getActionBar().setTitle(mDrawerTitle);
 				// calling onPrepareOptionsMenu() to hide action bar icons
+				NavDrawerItem x = (NavDrawerItem)mDrawerList.getItemAtPosition(2);
+				x.setCount(String.valueOf(Singleton.getInstance().getQtdTotal()));
+				
 				invalidateOptionsMenu();
+				
 			}
 		};
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
@@ -122,7 +143,7 @@ public class MainActivity extends Activity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.main, menu);
+		getMenuInflater().inflate(R.menu.camera, menu);
 		return true;
 	}
 
@@ -134,7 +155,9 @@ public class MainActivity extends Activity {
 		}
 		// Handle action bar actions click
 		switch (item.getItemId()) {
-		case R.id.action_settings:
+		case R.id.camera:
+			Intent i = new Intent(getApplicationContext(), CameraActivity.class);
+			startActivity(i);
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
@@ -148,7 +171,7 @@ public class MainActivity extends Activity {
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		// if nav drawer is opened, hide the action items
 		boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-		menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
+		menu.findItem(R.id.camera).setVisible(!drawerOpen);
 		return super.onPrepareOptionsMenu(menu);
 	}
 
@@ -160,16 +183,27 @@ public class MainActivity extends Activity {
 		Fragment fragment = null;
 		switch (position) {
 		case 0:
-			fragment = new HomeFragment();
+			fragment = new LojaFragment();
 			break;
 		case 1:
-			//fragment = new FindPeopleFragment();
+			fragment = new CategoriasFragment();
 			break;
 		case 2:
-			//fragment = new PhotosFragment();
+			fragment = new CarrinhoFragment();
 			break;
 		case 3:
 			//fragment = new CommunityFragment();
+			break;
+		case 4:
+			SharedPreferences pref = getSharedPreferences("userData", MODE_PRIVATE);
+			SharedPreferences.Editor editor = pref.edit();
+			
+			editor.clear();
+			editor.commit();
+			
+			Intent i = new Intent(this, LoginActivity.class);
+            startActivity(i);
+            finish();
 			break;
 		default:
 			break;

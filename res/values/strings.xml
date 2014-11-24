@@ -4,13 +4,34 @@
     <string name="app_name">Eclair Vinhos</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    
-     <!-- Nav Drawer Menu Items -->
+    <string name="btn_entrar" >Entrar</string>
+	<string name="btn_cadastrar" >Cadastrar</string>
+	<string name="btn_logarDepois">Logar depois</string>
+	<string name="dsc_logo">Logotipo</string>
+	<string name="lblEmail">Email</string>
+	<string name="lblSenha">Senha</string>
+	<string name="lblNome">Nome Completo</string>
+	<string name="lblTelComercial">Telefone comercial</string>
+	<string name="lblTelCelular">Telefone celular</string>
+	<string name="lblTelResidencial">Telefone residencial</string>
+	<string name="lblDataNascimento">Data de nascimento</string>
+	<string name="lblNews">Deseja receber novidades?</string>
+	
+	
+	
+    <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">
-        <item >Início</item>
-        <item >Categoria</item>
-        <item >Meus Pedidos</item>
-        <item >Sobre o App</item>
+        <item>Início</item>
+        <item>Categoria</item>
+        <item>Meus Pedidos</item>
+        <item>Sobre o App</item>
+        <item>Logout</item>
+    </string-array>
+
+    <string-array name="forma_pgto">
+        <item>Cartão de crédito</item>
+        <item>Boleto</item>
+        <item>Transferencia on-line</item>        
     </string-array>
     
     <!-- Nav Drawer List Item Icons -->
@@ -21,8 +42,12 @@
         <item>@drawable/ic_home</item>
         <item>@drawable/ic_home</item>
     </array>
-    
+
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_x">XActivity</string>
+    <string name="title_activity_camera">CameraActivity</string>
+    <string name="title_activity_cadastro">CadastroActivity</string>
 
 </resources>

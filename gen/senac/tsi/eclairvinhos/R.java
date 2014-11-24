@@ -74,7 +74,7 @@ public final class R {
         public static final int ScanButton=0x7f0a000b;
         public static final int _preco=0x7f0a0019;
         public static final int action_settings=0x7f0a0037;
-        public static final int btn_cadastrar=0x7f0a0006;
+        public static final int btn_cadastrar=0x7f0a0003;
         public static final int btn_cadastro=0x7f0a000e;
         public static final int btn_comprar=0x7f0a0022;
         public static final int btn_continuar=0x7f0a0023;
@@ -82,18 +82,18 @@ public final class R {
         public static final int btn_enviar=0x7f0a000f;
         public static final int btn_finalizar=0x7f0a0027;
         public static final int button1=0x7f0a0028;
-        public static final int cad_cel=0x7f0a0004;
+        public static final int cad_cel=0x7f0a0005;
         public static final int cad_dataNasc=0x7f0a0008;
-        public static final int cad_email=0x7f0a0002;
-        public static final int cad_senha=0x7f0a0001;
-        public static final int cad_telCom=0x7f0a0003;
-        public static final int cad_telRes=0x7f0a0005;
+        public static final int cad_email=0x7f0a0001;
+        public static final int cad_senha=0x7f0a0002;
+        public static final int cad_telCom=0x7f0a0006;
+        public static final int cad_telRes=0x7f0a0007;
         public static final int camera=0x7f0a0038;
         public static final int cameraPreview=0x7f0a0009;
         public static final int cat_descricao=0x7f0a001e;
         public static final int cat_nome=0x7f0a001d;
         public static final int categoria=0x7f0a0035;
-        public static final int ckb_newsl=0x7f0a0007;
+        public static final int ckb_newsl=0x7f0a0004;
         public static final int counter=0x7f0a0021;
         public static final int desconto=0x7f0a0036;
         public static final int drawer_layout=0x7f0a0012;
@@ -149,7 +149,8 @@ public final class R {
         public static final int fragment_photos=0x7f030010;
         public static final int fragment_produto=0x7f030011;
         public static final int fragment_whats_hot=0x7f030012;
-        public static final int list_row=0x7f030013;
+        public static final int home_fragment=0x7f030013;
+        public static final int list_row=0x7f030014;
     }
     public static final class menu {
         public static final int cadastro=0x7f090000;
@@ -161,10 +162,11 @@ public final class R {
         public static final int app_name=0x7f060000;
         public static final int btn_cadastrar=0x7f060004;
         public static final int btn_entrar=0x7f060003;
+        public static final int btn_lerQRCode=0x7f06000f;
         public static final int btn_logarDepois=0x7f060005;
         /**  Content Description 
          */
-        public static final int desc_list_item_icon=0x7f06000f;
+        public static final int desc_list_item_icon=0x7f060012;
         public static final int dsc_logo=0x7f060006;
         public static final int hello_world=0x7f060001;
         public static final int lblDataNascimento=0x7f06000d;
@@ -175,10 +177,12 @@ public final class R {
         public static final int lblTelCelular=0x7f06000b;
         public static final int lblTelComercial=0x7f06000a;
         public static final int lblTelResidencial=0x7f06000c;
-        public static final int title_activity_cadastro=0x7f060013;
-        public static final int title_activity_camera=0x7f060012;
-        public static final int title_activity_login=0x7f060010;
-        public static final int title_activity_x=0x7f060011;
+        public static final int lbl_lendo=0x7f060010;
+        public static final int logoCat=0x7f060011;
+        public static final int title_activity_cadastro=0x7f060016;
+        public static final int title_activity_camera=0x7f060015;
+        public static final int title_activity_login=0x7f060013;
+        public static final int title_activity_x=0x7f060014;
     }
     public static final class style {
         /** 

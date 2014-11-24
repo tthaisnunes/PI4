@@ -16,6 +16,10 @@
 	<string name="lblTelResidencial">Telefone residencial</string>
 	<string name="lblDataNascimento">Data de nascimento</string>
 	<string name="lblNews">Deseja receber novidades?</string>
+	<string name="btn_lerQRCode">Ler QRCode</string>
+	<string name="lbl_lendo">Lendo</string>
+	<string name="logoCat"></string>
+	
 	
 	
 	
